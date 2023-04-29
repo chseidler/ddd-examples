@@ -21,21 +21,28 @@ describe("Order unit testes", () => {
     })
 
     it("should calculate total", () => {
-        const item = new OrderItem("i1", "Item 1", 100);
+        const item = new OrderItem("i1", "Item 1", 100, "p1", 2);
         const order = new Order("o1", "c1", [item])
 
         const total = order.total();
 
-        expect(total).toBe(100)
+        expect(total).toBe(200)
     })
 
     it("should calculate total", () => {
-        const item = new OrderItem("i1", "Item 1", 100);
-        const item2 = new OrderItem("i2", "Item 2", 200);
+        const item = new OrderItem("i1", "Item 1", 100, "p1", 2);
+        const item2 = new OrderItem("i1", "Item 1", 200, "p2", 2);
         const order = new Order("o1", "c1", [item, item2])
 
         const total = order.total();
 
-        expect(total).toBe(300)
+        expect(total).toBe(600)
+    })
+
+    it("should throw error if the item qtd is less or equal 0", () => {
+        expect(() => {
+            const item = new OrderItem("i1", "Item 1", 100, "p1", 0);
+            const order = new Order("o1", "c1", [item])
+        }).toThrowError("Item qtd must be greater than 0")
     })
 })
