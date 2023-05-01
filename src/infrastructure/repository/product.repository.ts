@@ -35,7 +35,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
         const productsModel = await ProductModel.findAll();
 
         return productsModel.map(productsModel => 
-            new Product(productsModel.id, productsModel.name, productsModel.price
+            new Product(productsModel.id, productsModel.name, productsModel.price)
         );
     }
 }
