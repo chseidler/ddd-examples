@@ -24,6 +24,18 @@ export default class OrderItem {
         return this._quantity;
     }
 
+    get id(): string {
+        return this._id;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
+    get productId(): string {
+        return this._productId;
+    }
+
     validate(): boolean {
         if (this._quantity <= 0) {
             throw new Error("Item qtd must be greater than 0")
